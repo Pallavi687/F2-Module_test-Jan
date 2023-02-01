@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title> A Beautiful Gallery </title>
+</head>
+
+<body>
+    <div class="gallery">
+        <img src="image1.jpg" alt="Image 1" id="image1">
+        <img src="image2.jpg" alt="Image 2" id="image2">
+        <img src="image3.jpg" alt="Image 3" id="image3">
+        <img src="image4.jpg" alt="Image 4" id="image4">
+    </div>
+
+    <div class="form" id="form">
+        <h3>Register</h3>
+        <form>
+            <label>Name:</label>
+            <input type="text" name="name" id="name"><br><br>
+            <label>Email:</label>
+            <input type="email" name="email" id="email"><br><br>
+            <label>Username:</label>
+            <input type="text" name="username" id="username"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="user-info">
+        <p id="display"></p>
+        <!-- <p>Username</p> -->
+    </div>
+    <div class="dice" id="dice">
+        <img src="dice.jpg" alt="Dice" id="diceImg">
+        <p id="diceNumber"></p>
+    </div>
+    <div class="coupon-code hide" id="couponCode">
+        <p id="code"></p>
+    </div>
+
+    <script>
+
+        let image1 = document.getElementById("image1");
+        let image2 = document.getElementById("image2");
+        let image3 = document.getElementById("image3");
+        let image4 = document.getElementById("image4");
+        let form = document.getElementById("form");
+        let name = document.getElementById("name");
+        let email = document.getElementById("email");
+        let username = document.getElementById("username");
+        let display = document.getElementById("display");
+
+        let formInfoArray =[];
+
+        image1.addEventListener("click", function () {
+            form.style.display = "block";
+            couponCode.style.display = "none";
+            let nameVal = name.value;
+            let userNameVal = username.value;
+            let emailVal = email.value;
+            if (nameVal && userNameVal && emailVal) {
+                let obj = {
+                    Name: nameVal,
+                    UserName: userNameVal,
+                    Email: emailVal,
+                }
+
+                formInfoArray.push(obj);
+                alert('Your Info is Submitted successfully! Click on the next image to view your info.');
+                // console.log(formInfoArray);
+            } else {
+                alert(`Please fill all the fields.`)
+            }
+
+
+        });
+
+
+        image2.addEventListener("click", function () {
+            display.style.display = "block";
+            form.style.display = "none";
+        
+            display.innerHTML = `Name: ${formInfoArray[0].Name}, User Name: ${formInfoArray[0].UserName}, Email: ${formInfoArray[0].Email}`
+
+        });
+
+
+        const dice = document.getElementById("dice");
+        const diceImg = document.getElementById("diceImg");
+        const diceNumber = document.getElementById("diceNumber");
+        let sum = 0;
+        let count = 0;
+
+        image3.addEventListener("click", function () {
+            dice.style.display = "block";
+            display.style.display = "none";
+        });
+
+        diceImg.addEventListener("click", function () {
+            let randomNumber = Math.floor(Math.random() * 6) + 1;
+            diceNumber.innerHTML = randomNumber;
+            sum += randomNumber;
+            count++;
+            if (count === 3) {
+                if (sum > 10) {
+                    image4.style.pointerEvents = "auto";
+                } else {
+                    alert("Try again after scoring more than 10");
+                }
+            }
+        });
+
+        const couponCode = document.getElementById("couponCode");
+        const code = document.getElementById("code");
+
+        image4.addEventListener("click", function () {
+            couponCode.style.display = "block";
+            dice.style.display = "none";
+            code.innerHTML = generateCouponCode();
+        });
+
+        function generateCouponCode() {
+            let coupon = "";
+            const characters = "0123456789";
+
+            for (let i = 0; i < 12; i++) {
+                coupon += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+
+            return coupon;
+        }
+
+    </script>
+
+</body>
+
+</html>

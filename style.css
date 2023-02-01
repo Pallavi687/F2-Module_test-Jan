@@ -1,0 +1,72 @@
+.gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.gallery img {
+    width: 25%;
+    height: 30vh;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.form {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid gray;
+}
+
+.form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid gray;
+}
+
+.form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: lightgray;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.user-info {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid gray;
+}
+
+.dice {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid gray;
+}
+
+.coupon-code {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid gray;
+}
+
